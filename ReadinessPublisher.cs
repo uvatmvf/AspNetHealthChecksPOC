@@ -6,14 +6,7 @@ namespace AspNetHealthChecksPOC
     {
         public Task PublishAsync(HealthReport report, CancellationToken cancellationToken)
         {
-            if (report.Status == HealthStatus.Healthy)
-            {
-                Console.WriteLine($"{DateTime.UtcNow} Readiness Probe Status: {report.Status}");
-            }
-            else
-            {
-                Console.WriteLine($"{DateTime.UtcNow} Readiness Probe Status: {report.Status}");
-            }
+            Console.WriteLine($"{DateTime.UtcNow} Readiness Probe Status: {report.Status}");            
 
             cancellationToken.ThrowIfCancellationRequested();
 
