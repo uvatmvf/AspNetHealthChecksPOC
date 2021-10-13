@@ -8,13 +8,11 @@ namespace AspNetHealthChecksPOC
         {
             if (report.Status == HealthStatus.Healthy)
             {
-                Console.WriteLine("{Timestamp} Readiness Probe Status: {Result}",
-                    DateTime.UtcNow, report.Status);
+                Console.WriteLine($"{DateTime.UtcNow} Readiness Probe Status: {report.Status}");
             }
             else
             {
-                Console.WriteLine("{Timestamp} Readiness Probe Status: {Result}",
-                    DateTime.UtcNow, report.Status);
+                Console.WriteLine($"{DateTime.UtcNow} Readiness Probe Status: {report.Status}");
             }
 
             cancellationToken.ThrowIfCancellationRequested();

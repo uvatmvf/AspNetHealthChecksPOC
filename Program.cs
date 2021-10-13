@@ -6,13 +6,15 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddHealthChecks()
-    //.AddTypeActivatedCheck<DemoHealthCheck>("demo_health_check",
-    //    failureStatus: HealthStatus.Degraded,
-    //    tags: new[] { "Check1" },
-    //    args: new object[] { "Foo", 5 })
+    .AddTypeActivatedCheck<HealthCheckWithArgs>("demo_health_check",
+        failureStatus: HealthStatus.Degraded,
+        tags: new[] { "Check1" },
+        args: new object[] { "Foo", 5 })
     .AddCheck<DemoHealthCheck>("Bar",
         failureStatus: HealthStatus.Degraded,
-        tags: new[] { "Check2" });
+        tags: new[] { "Check2" })
+    .AddCheck("Example", () => HealthCheckResult.Healthy("Prove it out!"));
+
 builder.Services.Configure<HealthCheckPublisherOptions>(options =>
 {
     options.Delay = TimeSpan.FromSeconds(2);
