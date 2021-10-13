@@ -16,7 +16,7 @@ namespace AspNetHealthChecksPOC
         public Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
         {
             var random = new Random(DateTime.Now.Millisecond);
-            var healthCheckResultHealthy = random.Next(0, 1) == 0;
+            var healthCheckResultHealthy = random.Next(0, 2) == 0;
 
             if (healthCheckResultHealthy)
             {
